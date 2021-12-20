@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://lloydamt:polynomial6@contactstore.ivs5y.mongodb.net/contactStore?retryWrites=true&w=majority",
+    "jwtSecret": "newjsonwebtokensecret"
+}
