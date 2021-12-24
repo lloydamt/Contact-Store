@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../contexts/auth/authContext";
 
 const Navbar = ({ name, icon }) => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, user, logout } = authContext;
+
   return (
     <nav className='navbar bg-primary'>
       <h2>
         <i className={icon}></i> {name}
       </h2>
-      <ul>
-        <li className='p-1'>
-          <Link to='/'>Home</Link>
-        </li>
-        <li className='p-1'>
-          <Link to='/about'>About</Link>
-        </li>
-      </ul>
+      {isAuthenticated ? (
+        <ul>
+          <li className='p-1'>Hello {user && `${user.name}`}</li>
+          <li className='p-1'>
+            <Link to='/login' onClick={() => logout()}>
+              <i className='fas fa-sign-out-alt'></i> Logout
+            </Link>
+          </li>
+        </ul>
+      ) : (
+        <ul>
+          <li className='p-1'>
+            <Link to='/register'>Register</Link>
+          </li>
+          <li className='p-1'>
+            <Link to='/login'>Login</Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };

@@ -30,8 +30,22 @@ const ContactItem = ({ contact }) => {
           {type[0].toUpperCase() + type.slice(1)}
         </p>
       </div>
-      <div className='m'>{email && <p>{email}</p>}</div>
-      <div className='m'>{phone && <p>{phone}</p>}</div>
+      <div className='m'>
+        {email && (
+          <p>
+            <i className='fas fa-at'></i>
+            {" " + email}
+          </p>
+        )}
+      </div>
+      <div className='m'>
+        {phone && (
+          <p>
+            <i className='fas fa-phone'></i>
+            {" " + phone}
+          </p>
+        )}
+      </div>
       <div>
         <button className='btn btn-sm bg-dark' onClick={onEdit}>
           Edit

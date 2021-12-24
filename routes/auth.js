@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+import express from "express";
 import { body, validationResult } from "express-validator";
 import User from "../models/Users.js";
 import bcrypt from "bcryptjs";

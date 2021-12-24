@@ -21,7 +21,7 @@ const authMiddleware = (req, res, next) => {
     next();
   } catch (error) {
     console.error(error);
-    res.status(500).send("Token is invalid");
+    res.status(401).send("Token is invalid");
   }
 };
 

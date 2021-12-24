@@ -43,8 +43,8 @@ const ContactForm = () => {
   };
 
   return (
-    <>
-      <h1 className='text-center'>
+    <div className='form-container'>
+      <h1 className='text-center text-primary'>
         {currentContact ? "Update Contact" : "Add Contact"}
       </h1>
       <form onSubmit={onSubmit}>
@@ -110,7 +110,7 @@ const ContactForm = () => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

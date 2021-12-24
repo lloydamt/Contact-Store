@@ -49,7 +49,7 @@ const ContactsFilter = () => {
 
 const filterStyle = {
   display: "inline-block",
-  width: "82%",
+  width: "80%",
 };
 
 const defaultStyle = {
