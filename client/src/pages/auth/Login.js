@@ -7,7 +7,7 @@ const Login = () => {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
 
-  const { isAuthenticated, login, error, clearError } = authContext;
+  const { isAuthenticated, login, error, clearError, loadUser } = authContext;
   const { setAlert } = alertContext;
 
   const navigate = useNavigate();
@@ -62,12 +62,14 @@ const Login = () => {
             name='password'
             value={password}
             onChange={onInputChange}
+            required
           />
         </div>
         <input
           type='submit'
           value='Login'
-          className='btn btn-lg btn-block bg-dark-grey'
+          className='btn btn-lg btn-block bg-primary'
+          required
         />
       </form>
     </div>

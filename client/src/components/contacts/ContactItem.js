@@ -6,19 +6,19 @@ const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setContact } = contactContext;
 
-  const { id, name, email, phone, type } = contact;
+  const { _id, name, email, phone, type } = contact;
 
   //onDelete only requires ID as the only field being checked in the reducer is the contact's ID
   const onDelete = () => {
-    deleteContact({ id });
+    deleteContact({ _id });
   };
 
   const onEdit = () => {
-    setContact({ id, name, email, phone, type });
+    setContact({ _id, name, email, phone, type });
   };
 
   return (
-    <div className='card'>
+    <div className='card bg-light'>
       <div>
         <i className='fas fa-id-badge'></i> <strong>{name + " "}</strong>
         <p

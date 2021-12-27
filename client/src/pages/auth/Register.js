@@ -99,7 +99,7 @@ const Register = () => {
           <input
             type='submit'
             value='Register'
-            className='btn btn-lg btn-block bg-dark-grey'
+            className='btn btn-lg btn-block bg-primary'
           />
         </form>
       </div>

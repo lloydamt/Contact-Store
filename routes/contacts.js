@@ -66,7 +66,7 @@ contactsRouter.put("/:id", authMiddleware, async (req, res) => {
   if (type) updates.type = type;
 
   try {
-    let contact = Contact.findById(req.params.id);
+    let contact = await Contact.findById(req.params.id);
     if (!contact) {
       return res.status(404).json({ msg: "Contact not found" });
     }

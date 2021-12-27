@@ -1,27 +1,37 @@
-import React, { useContext } from "react";
-import { v4 as uuid } from "uuid";
+import React, { useContext, useEffect } from "react";
 import ContactItem from "./ContactItem";
 import ContactContext from "../../contexts/contacts/contactContext";
+import Spinner from "../layout/Spinner";
 
 const ContactList = () => {
   const contactContext = useContext(ContactContext);
-  const { contacts, filteredContacts } = contactContext;
+  const { contacts, filteredContacts, loadContacts, loading } = contactContext;
+
+  useEffect(() => {
+    loadContacts();
+  }, []);
+
+  if (contacts !== null && contacts.length === 0) {
+    return <h3>Add a contact</h3>;
+  }
+
   return (
-    <div className='container'>
-      {filteredContacts
-        ? filteredContacts.map((contact) => {
-            if (!contact.id) {
-              contact.id = uuid();
-            }
-            return <ContactItem key={contact.id} contact={contact} />;
-          })
-        : contacts.map((contact) => {
-            if (!contact.id) {
-              contact.id = uuid();
-            }
-            return <ContactItem key={contact.id} contact={contact} />;
-          })}
-    </div>
+    <>
+      {contacts !== null && !loading ? (
+        <div className='container'>
+          {filteredContacts !== null
+            ? filteredContacts.map((contact) => {
+                return <ContactItem key={contact._id} contact={contact} />;
+              })
+            : contacts !== null &&
+              contacts.map((contact) => {
+                return <ContactItem key={contact._id} contact={contact} />;
+              })}
+        </div>
+      ) : (
+        <Spinner />
+      )}
+    </>
   );
 };
 

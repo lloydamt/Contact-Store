@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/auth/authContext";
+import ContactContext from "../../contexts/contacts/contactContext";
 
 const Navbar = ({ name, icon }) => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, user, logout } = authContext;
+  const contactContext = useContext(ContactContext);
+  const { emptyContacts } = contactContext;
+
+  const onLogout = () => {
+    emptyContacts();
+    logout();
+  };
 
   return (
     <nav className='navbar bg-primary'>
@@ -15,7 +23,7 @@ const Navbar = ({ name, icon }) => {
         <ul>
           <li className='p-1'>Hello {user && `${user.name}`}</li>
           <li className='p-1'>
-            <Link to='/login' onClick={() => logout()}>
+            <Link to='/login' onClick={onLogout}>
               <i className='fas fa-sign-out-alt'></i> Logout
             </Link>
           </li>

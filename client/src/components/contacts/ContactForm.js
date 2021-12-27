@@ -97,7 +97,7 @@ const ContactForm = () => {
         <input
           type='submit'
           value={currentContact ? "Update" : "Add Contact"}
-          className='btn btn-lg btn-block bg-dark-grey'
+          className='btn btn-lg btn-block bg-primary'
         />
       </form>
       {(name || email || phone) && (
